@@ -1,0 +1,93 @@
+/* SITE WIDE STYLING */
+:root{
+  --bg: #1e1e1e;            /* page background */
+  --nav-bg: #0f0f0f;          /* nav background */
+  --text: #fefefe;
+  --title: #ffffff;
+  --accent: #fec476;        /* gold */
+  --shadow: 0 10px 30px rgba(0,0,0,.35);
+  --styled-text: "Knewave", system-ui;
+}
+
+html, body, #root { height: 100%; }
+body{
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+}
+
+img{ max-width: 100%; display: block; }
+
+/* APP LEVEL */
+#app {
+  display: flex;
+  min-height: 100vh;
+  font-family: "Zain", sans-serif;
+}
+
+.sidebar {
+  background: var(--nav-bg);
+  min-width: 400px;
+  position: fixed;
+  inset: 0 auto 0 0;
+  padding: 4rem 2rem;
+}
+
+.content {
+  margin-left: 400px;
+  min-height: 100vh;
+  padding: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* NAVBAR */
+#navbar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 100%;
+}
+
+#nav-title {
+  font-family: var(--styled-text);
+  font-size: 3rem;
+}
+
+#nav-title-highlight {
+  color: var(--accent);
+}
+
+#nav-links {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  height: 500px;
+  font-size: 1.5rem;
+}
+
+.nav-link {
+  display: flex;
+  /* align-items: center; */
+  color: var(--text);
+  text-decoration: none;
+}
+
+.nav-link--active {
+  color: var(--accent);
+}
+
+#nav-links svg {
+  margin-right: 1rem;
+}
+
+/* HOME PAGE */
+
+/* ABOUT PAGE */
+
+/* RESUME PAGE */
+
+/* CONTACT PAGE */

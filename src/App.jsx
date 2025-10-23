@@ -9,7 +9,7 @@ import './App.css';
 
 function App() {
   return (
-    <>
+    <div id="app">
       <aside className="sidebar"><NavBar /></aside>
       <main className="content">
         <Routes>
@@ -20,7 +20,7 @@ function App() {
           <Route path="*" element={<div>Not found</div>} />
         </Routes>
       </main>
-    </>
+    </div>
   );
 }
 
