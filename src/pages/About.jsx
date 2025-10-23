@@ -77,7 +77,7 @@ export default function About() {
         <div className="about-bottom">
           <section className="about-left">
             <div className="section-heading">
-              <h3 className="about-bottom-title">By the Numbers</h3>
+              <h3 className="about-bottom-title">Track Record</h3>
               <img className="about-emblem" src={Car} alt="an f1 car icon" aria-hidden />
             </div>
 
