@@ -50,7 +50,7 @@ export default function Contact() {
   return (
     <div id="contact-page" className="content-page">
       <div id="contact-title">
-        <h1>Contact Me</h1>
+        <h1 className="page-title">Contact Me</h1>
         <p>
           {`Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           Fusce ac augue eu velit dictum scelerisque non vitae nisl.
