@@ -106,7 +106,7 @@ body {
       color: $text;
       font-size: 1.25rem;
       width: 157px;
-      transition: color 0.22s ease, transform 0.22s ease;
+      transition: color 0.35s ease, transform 0.35s ease;
 
       &:hover {
         transform: scale(1.2);
@@ -125,7 +125,7 @@ body {
 
     a {
       color: $text;
-      transition: color 0.22s ease;
+      transition: color 0.35s ease;
 
       &:hover {
         color: $accent;
@@ -287,7 +287,7 @@ body {
         font-size: 1.15rem;
         font-weight: bold;
         color: $bg;
-        transition: color .22s ease-in-out, background-color .22s ease-in-out;
+        transition: color 0.35s ease-in-out, background-color 0.35s ease-in-out;
 
         &:hover {
           cursor: pointer;
