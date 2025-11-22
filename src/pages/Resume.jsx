@@ -2,6 +2,6 @@ import React from 'react';
 
 export default function Resume() {
   return (
-    <div />
+    <div id="resume-page" className="content-page" />
   );
 }

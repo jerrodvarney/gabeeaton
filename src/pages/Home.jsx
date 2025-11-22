@@ -1,11 +1,9 @@
 import React from 'react';
-import HomePhoto from '../assets/homephoto1.jpg';
 
 export default function Home() {
   return (
-    <div id="home-page">
-      <img id="home-background" src={HomePhoto} alt="Gabe at Area 15" />
-      <div id="home-title-container">
+    <div id="home-page" className="content-page">
+      <div className="home-title-container">
         <h3>{'Hello, I\'m'}</h3>
         <h1>Gabe Eaton</h1>
         <h2>Implementation & Data Solutions Engineer</h2>

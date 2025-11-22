@@ -44,13 +44,10 @@ function InterestChip({ title, Icon }) {
 
 export default function About() {
   return (
-    <main id="about-page">
+    <main id="about-page" className="content-page">
       <section className="about-card">
         <header className="about-header">
-          <h1 className="about-title">About Me</h1>
-          <p className="about-kicker">
-            From raw files to production-ready tables: predictable ETL and zero-drama go-lives.
-          </p>
+          <h1 className="page-title">About Me</h1>
         </header>
 
         <div className="about-hero">

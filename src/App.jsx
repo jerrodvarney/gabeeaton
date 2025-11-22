@@ -5,13 +5,15 @@ import About from './pages/About';
 import Resume from './pages/Resume';
 import Contact from './pages/Contact';
 
-import './App.css';
+import './App.scss';
 
 function App() {
   return (
     <div id="app">
-      <aside className="sidebar"><NavBar /></aside>
-      <main className="content">
+      <aside id="sidebar">
+        <NavBar />
+      </aside>
+      <main id="content">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="about" element={<About />} />

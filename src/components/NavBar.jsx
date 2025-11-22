@@ -5,16 +5,29 @@ import { FaUser, FaLinkedinIn, FaInstagram } from 'react-icons/fa';
 import { HiDocumentText } from 'react-icons/hi2';
 import { IoIosMail } from 'react-icons/io';
 
+const socialLinks = [
+  {
+    href: 'https://www.linkedin.com/in/gabriel-eaton-20a981116/',
+    label: 'Gabriel on LinkedIn',
+    Icon: FaLinkedinIn,
+  },
+  {
+    href: 'https://www.instagram.com/gabbeybabey50/?hl=en',
+    label: 'Gabriel on Instagram',
+    Icon: FaInstagram,
+  },
+];
+
 export default function NavBar() {
-  const linkClass = ({ isActive }) => `nav-link ${isActive ? 'nav-link--active' : ''}`;
+  const linkClass = ({ isActive }) => `nav-link ${isActive ? 'active-link' : ''}`;
 
   return (
     <nav id="navbar">
-      <h2 id="nav-title">
-        <span id="nav-title-highlight">G</span>
+      <h2>
+        <span>G</span>
         eaton
       </h2>
-      <div id="nav-links">
+      <div className="nav-links">
         <NavLink to="/" end className={linkClass}>
           <IoHome size="1.5rem" />
           Home
@@ -32,9 +45,19 @@ export default function NavBar() {
           Contact
         </NavLink>
       </div>
-      <div id="nav-socials">
-        <a href="https://www.linkedin.com/in/gabriel-eaton-20a981116/" target="_blank" rel="noreferrer"><FaLinkedinIn /></a>
-        <a href="https://www.instagram.com/gabeybabey50/?hl=en" target="_blank" rel="noreferrer"><FaInstagram /></a>
+      <div className="nav-socials">
+        {socialLinks.map(({ href, label, Icon }) => (
+          <a
+            key={label}
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={label}
+            className="nav-social-link"
+          >
+            <Icon size={20} />
+          </a>
+        ))}
       </div>
     </nav>
   );
