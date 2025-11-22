@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 import { AiOutlineMail } from 'react-icons/ai';
 import { HiOutlineLocationMarker } from 'react-icons/hi';
 
@@ -48,7 +49,14 @@ export default function Contact() {
   };
 
   return (
-    <div id="contact-page" className="content-page">
+    <motion.div
+      id="contact-page"
+      className="content-page"
+      initial={{ opacity: 0, y: 0 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 0 }}
+      transition={{ duration: 0.35, ease: 'easeInOut' }}
+    >
       <div id="contact-title">
         <h1 className="page-title">Contact Me</h1>
         <p>
@@ -113,6 +121,6 @@ export default function Contact() {
           {status.ok === false && <p className="err">{status.msg}</p>}
         </form>
       </div>
-    </div>
+    </motion.div>
   );
 }

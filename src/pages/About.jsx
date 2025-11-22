@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import {
   FiDatabase, FiUploadCloud, FiSettings, FiUserCheck,
 } from 'react-icons/fi';
@@ -60,7 +61,14 @@ export default function About() {
   };
 
   return (
-    <div id="about-page" className="content-page">
+    <motion.div
+      id="about-page"
+      className="content-page"
+      initial={{ opacity: 0, y: 0 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 0 }}
+      transition={{ duration: 0.35, ease: 'easeInOut' }}
+    >
       <h1 className="page-title">About Me</h1>
       <div className="about-main">
         <div className="about-photo-container">
@@ -108,6 +116,6 @@ export default function About() {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
