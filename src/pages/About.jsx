@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   FiDatabase, FiUploadCloud, FiSettings, FiUserCheck,
 } from 'react-icons/fi';
@@ -6,78 +7,107 @@ import { TbSteeringWheel, TbBallAmericanFootball } from 'react-icons/tb';
 import { FaRocket, FaGuitar } from 'react-icons/fa';
 import Car from '../assets/formula.png';
 
-/** Data (icons as components, not JSX) */
-const RESULTS = [
-  { title: '6 Years', tagline: 'Job Experience', Icon: FiUserCheck },
+const stats = [
+  { title: '6 Years Job', tagline: 'Experience', Icon: FiUserCheck },
+  { title: 'Bulk Ops', tagline: '20–30 jobs/mo', Icon: FiSettings },
   { title: 'ETL Throughput', tagline: '~2.5M rows/mo', Icon: FiDatabase },
   { title: 'Large Imports', tagline: '5+/mo · ~500k ea', Icon: FiUploadCloud },
-  { title: 'Bulk Ops', tagline: '20–30 jobs/mo', Icon: FiSettings },
 ];
 
-const INTERESTS = [
+const interests = [
   { title: 'Formula 1', Icon: TbSteeringWheel },
-  { title: 'Football', Icon: TbBallAmericanFootball },
+  { title: 'Sports', Icon: TbBallAmericanFootball },
   { title: 'Rocket League', Icon: FaRocket },
-  { title: 'Heavy Music', Icon: FaGuitar },
+  { title: 'Music', Icon: FaGuitar },
 ];
 
-/** Small presentational bits */
 function StatTile({ title, tagline, Icon }) {
   return (
-    <article className="tile" aria-label={title}>
-      <Icon className="tile-icon" aria-hidden size={22} />
-      <h4 className="tile-title">{title}</h4>
-      <p className="tile-tagline">{tagline}</p>
-    </article>
+    <div className={`tile ${title === '6 Years Job' ? 'first' : ''}`} aria-label={title}>
+      <div className="icon-wrapper">
+        <Icon
+          aria-hidden
+          size="2rem"
+          color={title === '6 Years Job' ? '#1e1e1e' : '#fec476'}
+        />
+      </div>
+      <div className="tile-content">
+        <h4>{title}</h4>
+        <p>{tagline}</p>
+      </div>
+    </div>
   );
 }
 
 function InterestChip({ title, Icon }) {
   return (
     <div className="chip" aria-label={title}>
-      <Icon className="chip-icon" aria-hidden size={18} />
-      <span className="chip-title">{title}</span>
+      <Icon
+        aria-hidden
+        size="2rem"
+        color="#fec476"
+      />
+      <p>{title}</p>
     </div>
   );
 }
 
 export default function About() {
+  const navigate = useNavigate();
+
+  const contact = () => {
+    navigate('/contact');
+  };
+
   return (
-    <main id="about-page" className="content-page">
+    <div id="about-page" className="content-page">
       <h1 className="page-title">About Me</h1>
-      <div className="about-hero">
-        <div className="about-photo" />
-        <div className="about-text">
-          <h2 className="about-name">Gabriel Eaton</h2>
-          <h3 className="about-role">Implementation &amp; Data Solutions Engineer</h3>
-          <p>
+      <div className="about-main">
+        <div className="about-photo-container">
+          <div className="about-photo" alt="photo of Gabe at Valley of Fire State Park">
+            <div className="angled-border-top" />
+            <div className="angled-border-bottom" />
+          </div>
+        </div>
+        <div className="about-info">
+          <h2 className="bottom-margin">Gabriel Eaton</h2>
+          {/* <h3>Implementation &amp; Data Solutions Engineer</h3> */}
+          <h3 className="bottom-margin">Pro Data Dude</h3>
+          <p className="bottom-margin">
             {`Hello! I’m Gabe, a customer-facing engineer who owns end-to-end data integrations and large-scale database changes.
-              For the last 6 years I’ve led client onboarding, schema mapping, T-SQL/Access/VBA transforms, validation, and production cutovers—plus building PDF/Access reporting workflows and handling helpdesk/how-tos.
-              I’m the sole owner of this function at my company, so I care a lot about clear communication, predictable delivery, and clean runbooks.`}
+              For the last 6 years I’ve led client onboarding, schema mapping, validation, creating reporting workflows, handling helpdesk, and more.
+              I care about clear communication, predictable delivery, and clean runbooks.`}
           </p>
-          <p>
-            {`Outside work I’m a huge sports fan (yes… long-suffering Browns 🧡🤎), an F1 addict, and I play way too much Rocket League.
+          <p className="bottom-margin">
+            {`Outside work I’m a huge sports fan (long-suffering Browns 🧡🤎), an F1 addict, and I play way too much Rocket League.
               If there’s a scoreboard, I’m probably trying to optimize it.`}
           </p>
+          <button type="button" onClick={contact}>
+            Get In Touch!
+          </button>
         </div>
       </div>
       <div className="about-bottom">
-        <div className="section-heading">
-          <h3 className="about-bottom-title">Track Record</h3>
-          <img className="about-emblem" src={Car} alt="an f1 car icon" aria-hidden />
+        <div className="stats-section">
+          <h3 className="stats-title">
+            Track Record
+            <img src={Car} alt="an f1 car icon" aria-hidden />
+          </h3>
+          <div className="stat-tiles">
+            {stats.map((r) => (
+              <StatTile key={r.title} {...r} />
+            ))}
+          </div>
         </div>
-        <div className="tiles">
-          {RESULTS.map((r) => (
-            <StatTile key={r.title} {...r} />
-          ))}
-        </div>
-        <h3 className="about-bottom-title">My Interests</h3>
-        <div className="interests">
-          {INTERESTS.map((i) => (
-            <InterestChip key={i.title} {...i} />
-          ))}
+        <div className="interests-section">
+          <h3>My Interests</h3>
+          <div className="interests-chips">
+            {interests.map((i) => (
+              <InterestChip key={i.title} {...i} />
+            ))}
+          </div>
         </div>
       </div>
-    </main>
+    </div>
   );
 }
