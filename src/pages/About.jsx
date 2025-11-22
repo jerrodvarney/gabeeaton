@@ -1,18 +1,20 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { RiUserStarFill } from 'react-icons/ri';
+import { IoIosCloudOutline } from 'react-icons/io';
 import {
-  FiDatabase, FiUploadCloud, FiSettings, FiUserCheck,
+  FiDatabase, FiSettings,
 } from 'react-icons/fi';
 import { TbSteeringWheel, TbBallAmericanFootball } from 'react-icons/tb';
 import { FaRocket, FaGuitar } from 'react-icons/fa';
 import Car from '../assets/formula.png';
 
 const stats = [
-  { title: '6 Years Job', tagline: 'Experience', Icon: FiUserCheck },
+  { title: '6 Years Job', tagline: 'Experience', Icon: RiUserStarFill },
   { title: 'Bulk Ops', tagline: '20–30 jobs/mo', Icon: FiSettings },
   { title: 'ETL Throughput', tagline: '~2.5M rows/mo', Icon: FiDatabase },
-  { title: 'Large Imports', tagline: '5+/mo · ~500k ea', Icon: FiUploadCloud },
+  { title: 'Large Imports', tagline: '5+/mo · ~500k ea', Icon: IoIosCloudOutline },
 ];
 
 const interests = [
