@@ -1,51 +1,37 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { AiOutlineMail } from 'react-icons/ai';
-import { HiOutlineLocationMarker } from 'react-icons/hi';
+import { FiBriefcase, FiSettings, FiMapPin } from 'react-icons/fi';
+
+const contactCards = [
+  {
+    title: 'Availability',
+    body: ['Remote-friendly', 'Full-time & Contract'],
+    Icon: FiBriefcase,
+  },
+  {
+    title: 'Focus areas',
+    body: [
+      'Data & Integration',
+      'Internal Tools & Reporting',
+    ],
+    Icon: FiSettings,
+  },
+  {
+    title: 'Location',
+    body: ['Las Vegas, NV', 'Pacific Time (PT)'],
+    Icon: FiMapPin,
+  },
+];
 
 export default function Contact() {
-  // STATE
   const [form, setForm] = useState({
     name: '', email: '', subject: '', message: '',
   });
-  const [status, setStatus] = useState({ sending: false, ok: null, msg: '' });
 
-  // EVENT HANDLERS
   const onChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setStatus({ sending: true, ok: null, msg: '' });
-
-    try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
-      });
-      const data = await res.json();
-
-      if (!res.ok) throw new Error(data.error || 'Failed to send');
-
-      setStatus({ sending: false, ok: true, msg: 'Message sent! Check your email.' });
-      setForm({
-        name: '', email: '', subject: '', message: '',
-      });
-    } catch (err) {
-      setStatus({ sending: false, ok: false, msg: err.message });
-    }
-
-    return (
-      <form onSubmit={handleSubmit}>
-        <input name="name" value={form.name} onChange={onChange} placeholder="Name" required />
-        <input type="email" name="email" value={form.email} onChange={onChange} placeholder="Email" required />
-        <input name="subject" value={form.subject} onChange={onChange} placeholder="Subject" />
-        <textarea name="message" value={form.message} onChange={onChange} placeholder="Message" rows={6} required />
-        <button type="submit" disabled={status.sending}>{status.sending ? 'Sending…' : 'Send'}</button>
-        {status.ok === true && <p style={{ color: 'limegreen' }}>{status.msg}</p>}
-        {status.ok === false && <p style={{ color: 'tomato' }}>{status.msg}</p>}
-      </form>
-    );
   };
 
   return (
@@ -57,25 +43,36 @@ export default function Contact() {
       exit={{ opacity: 0, y: 0 }}
       transition={{ duration: 0.35, ease: 'easeInOut' }}
     >
-      <div id="contact-title">
-        <h1 className="page-title">Contact Me</h1>
-        <p>
-          {`Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          Fusce ac augue eu velit dictum scelerisque non vitae nisl.
-          Integer molestie pulvinar varius. Quisque ac metus laoreet,
-          molestie nunc non, tempor nunc. In sagittis justo a massa lacinia fermentum.`}
-        </p>
-      </div>
-      <div id="contact-cards">
-        <div className="contact-card">
-          <AiOutlineMail />
-          <h3>E-mail</h3>
-          <p>gabeeaton@isafuckboy.com</p>
+      <div className="contact-main">
+
+        <div className="contact-title">
+          <h1 className="page-title">Contact Me</h1>
+          <p>
+            {`I’m open to data, implementation, and general software engineering roles,
+          along with collaboration on interesting side projects. Use the form below
+          to message me!`}
+          </p>
         </div>
-        <div className="contact-card">
-          <HiOutlineLocationMarker />
-          <h3>Location</h3>
-          <p>6969 Fuckboy Lane, Las Vegas</p>
+        <div className="contact-cards">
+          {contactCards.map((card) => (
+            <div key={card.title} className="contact-card">
+              <div className={`card-icon ${card.title === 'Availability' ? 'first' : ''}`}>
+                <card.Icon
+                  size="1.75rem"
+                  color={card.title === 'Availability' ? '#252525' : '#c8aa8b'}
+                  aria-hidden
+                />
+              </div>
+              <div className="card-text">
+                <h3>{card.title}</h3>
+                <div className="card-body">
+                  {card.body.map((line) => (
+                    <p key={line}>{line}</p>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
         <form id="contact-form" onSubmit={handleSubmit} noValidate>
           <div className="row">
@@ -113,12 +110,9 @@ export default function Contact() {
             onChange={onChange}
             required
           />
-          <button type="submit" disabled={status.sending}>
-            {status.sending ? 'Sending…' : 'Send Message'}
+          <button type="submit">
+            Submit
           </button>
-
-          {status.ok === true && <p className="ok">{status.msg}</p>}
-          {status.ok === false && <p className="err">{status.msg}</p>}
         </form>
       </div>
     </motion.div>

@@ -1,5 +1,6 @@
 //SITE WIDE STYLING VARIABLES
 $accent: #fec476;
+$icon-accent: #c8aa8b;
 $bg: #1e1e1e;
 $bold: 700;
 $nav-bg: #0f0f0f;
@@ -9,6 +10,7 @@ $title: #ffffff;
 $shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
 $font-body: "Montserrat", sans-serif;
 $font-styled: "Knewave", system-ui;
+$card-bg: #252525;
 
 
 // LAYOUT VARIABLES
@@ -231,7 +233,8 @@ body {
         background-repeat: no-repeat;
         height: 435px;
         width: 375px;
-        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        border-radius: 1px;
 
         .angled-border-top {
           position: absolute;
@@ -284,6 +287,7 @@ body {
         background-color: $accent;
         border-radius: 4px;
         border: 2px solid $accent;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         font-size: 1.15rem;
         font-weight: bold;
         color: $bg;
@@ -389,10 +393,6 @@ body {
           display: flex;
           align-items: center;
           gap: 1rem;
-
-          p {
-
-          }
         }
       }
     }
@@ -403,3 +403,69 @@ body {
 
 
 // CONTACT PAGE
+.contact-main {
+  width: 100%;
+  max-width: 1100px;
+
+  .contact-title {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+    padding-bottom: 4rem;
+
+    p {
+      max-width: 800px;
+      text-align: center;
+      line-height: 1.5;
+      font-weight: 600;
+    }
+  }
+
+  .contact-cards {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    // align-items: stretch;
+
+    .contact-card {
+      flex: 1 1 0;
+      min-width: 0;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      padding: 1.5rem;
+      background-color: $card-bg;
+      border-radius: 2px;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+      .card-icon {
+        border: 1px dashed $icon-accent;
+        padding: .75rem;
+        border-radius: 50%;
+        display: flex;
+      }
+
+      .first {
+        border: 2px solid $accent;
+        background-color: $accent;
+      }
+
+      .card-text {
+        display: flex;
+        flex-direction: column;
+        gap: .75rem;
+
+        h3 {
+          font-weight: $bold;
+          font-size: 1.25rem;
+        }
+
+        .card-body {
+          line-height: 1.5;
+        }
+      }
+    }
+  }
+
+}
