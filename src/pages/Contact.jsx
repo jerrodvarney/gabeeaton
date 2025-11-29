@@ -37,6 +37,12 @@ export default function Contact() {
     msg: '',
   });
 
+  const getSendStatus = () => {
+    if (status.sending) return 'Sending...';
+    if (status.ok) return 'Sent!';
+    return 'Send Message';
+  };
+
   const onChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
   const handleSubmit = async (e) => {
@@ -143,9 +149,7 @@ export default function Contact() {
             required
           />
           <button type="submit">
-            {status.sending
-              ? 'Sending...'
-              : 'Send Message'}
+            {getSendStatus()}
           </button>
         </form>
       </div>
