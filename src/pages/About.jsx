@@ -84,7 +84,7 @@ export default function About() {
           {/* <h3>Implementation &amp; Data Solutions Engineer</h3> */}
           <h3 className="bottom-margin">Pro Data Dude</h3>
           <p className="bottom-margin">
-            {`Hello! I’m Gabe, a customer-facing engineer who owns end-to-end data integrations and large-scale database changes.
+            {`Hello! I’m Gabriel, a customer-facing engineer who owns end-to-end data integrations and large-scale database changes.
               For the last 6 years I’ve led client onboarding, schema mapping, validation, creating reporting workflows, handling helpdesk, and more.
               I care about clear communication, predictable delivery, and clean runbooks.`}
           </p>
