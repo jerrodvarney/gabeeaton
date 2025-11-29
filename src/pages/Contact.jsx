@@ -25,13 +25,44 @@ const contactCards = [
 
 export default function Contact() {
   const [form, setForm] = useState({
-    name: '', email: '', subject: '', message: '',
+    name: '',
+    email: '',
+    subject: '',
+    message: '',
+  });
+
+  const [status, setStatus] = useState({
+    sending: false,
+    ok: null,
+    msg: '',
   });
 
   const onChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setStatus({ sending: true, ok: null, msg: '' });
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+
+      const data = await res.json().catch(() => ({}));
+
+      if (!res.ok) {
+        throw new Error(data.error || 'Failed to send message');
+      }
+
+      setForm({
+        name: '', email: '', subject: '', message: '',
+      });
+      setStatus({ sending: false, ok: true, msg: 'Message sent! I’ll get back to you soon.' });
+    } catch (err) {
+      setStatus({ sending: false, ok: false, msg: err.message });
+    }
   };
 
   return (
@@ -112,7 +143,9 @@ export default function Contact() {
             required
           />
           <button type="submit">
-            Send Message
+            {status.sending
+              ? 'Sending...'
+              : 'Send Message'}
           </button>
         </form>
       </div>
