@@ -2,6 +2,7 @@
 $accent: #fec476;
 $icon-accent: #c8aa8b;
 $bg: #1e1e1e;
+$borders: #96969666;
 $bold: 700;
 $nav-bg: #0f0f0f;
 $nav-title-size: 3rem;
@@ -426,7 +427,6 @@ body {
     display: flex;
     justify-content: center;
     gap: 2rem;
-    // align-items: stretch;
 
     .contact-card {
       flex: 1 1 0;
@@ -437,7 +437,7 @@ body {
       padding: 1.5rem;
       background-color: $card-bg;
       border-radius: 2px;
-      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      box-shadow: rgba(0, 0, 0, 0.02) 0px 3px 6px, rgba(0, 0, 0, 0.02) 0px 3px 6px;
 
       .card-icon {
         border: 1px dashed $icon-accent;
@@ -464,6 +464,63 @@ body {
         .card-body {
           line-height: 1.5;
         }
+      }
+    }
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 6rem;
+
+    h3 {
+      font-size: 2.25rem;
+      font-weight: $bold;
+      padding-bottom: 2rem;
+    }
+
+    .row {
+      display: flex;
+      gap: 2rem;
+      width: 100%;
+    }
+
+    input, textarea {
+      background-color: $bg;
+      border: 1px solid $borders;
+      border-radius: 5px;
+      width: 100%;
+      padding: 1rem 2rem;
+      font-size: 1rem;
+      font-family: $font-body;
+      font-weight: $bold;
+
+      &:focus,
+      &:focus-visible {
+        border-color: $accent;
+        outline: none;
+      }
+    }
+
+    button {
+      padding: 1rem 2rem;
+      font-family: $font-body;
+      font-weight: $bold;
+      font-size: 1rem;
+      color: $bg;
+      background-color: $accent;
+      border: 1px solid $accent;
+      border-radius: 5px;
+      transition: background-color 0.35s ease, color 0.35s ease, transform 0.35s ease;
+
+      &:hover {
+        cursor: pointer;
+        transform: scale(1.1);
+        background-color: $bg;
+        color: $accent;
       }
     }
   }

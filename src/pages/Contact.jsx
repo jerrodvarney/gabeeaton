@@ -75,11 +75,12 @@ export default function Contact() {
           ))}
         </div>
         <form id="contact-form" onSubmit={handleSubmit} noValidate>
+          <h3>Get In Touch</h3>
           <div className="row">
             <input
               type="text"
               name="name"
-              placeholder="Your name"
+              placeholder="Name"
               autoComplete="name"
               value={form.name}
               onChange={onChange}
@@ -88,7 +89,7 @@ export default function Contact() {
             <input
               type="email"
               name="email"
-              placeholder="you@example.com"
+              placeholder="Email"
               autoComplete="email"
               value={form.email}
               onChange={onChange}
@@ -98,20 +99,20 @@ export default function Contact() {
           <input
             type="text"
             name="subject"
-            placeholder="What’s this about?"
+            placeholder="Subject"
             value={form.subject}
             onChange={onChange}
           />
           <textarea
             name="message"
-            placeholder="Write your message…"
-            rows={6}
+            placeholder="Message"
+            rows={8}
             value={form.message}
             onChange={onChange}
             required
           />
           <button type="submit">
-            Submit
+            Send Message
           </button>
         </form>
       </div>
