@@ -82,13 +82,13 @@ export default function About() {
         <div className="about-info">
           <h2 className="bottom-margin">Gabriel Eaton</h2>
           {/* <h3>Implementation &amp; Data Solutions Engineer</h3> */}
-          <h3 className="bottom-margin">Pro Data Dude</h3>
-          <p className="bottom-margin">
+          <h3>Pro Data Dude</h3>
+          <p>
             {`Hello! I’m Gabriel, a customer-facing engineer who owns end-to-end data integrations and large-scale database changes.
               For the last 6 years I’ve led client onboarding, schema mapping, validation, creating reporting workflows, handling helpdesk, and more.
               I care about clear communication, predictable delivery, and clean runbooks.`}
           </p>
-          <p className="bottom-margin">
+          <p>
             {`Outside work I’m a huge sports fan (long-suffering Browns 🧡🤎), an F1 addict, and I play way too much Rocket League.
               If there’s a scoreboard, I’m probably trying to optimize it.`}
           </p>

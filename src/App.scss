@@ -37,16 +37,28 @@ body {
   display: flex;
   height: 100vh;
   width: 100%;
+
+  @media (max-width: 1225px) {
+    height: auto;
+    min-height: 100vh;
+    flex-direction: column;
+  }
 }
 
 #sidebar {
   background: $nav-bg;
   flex: 0 0 clamp($sidebar-min, $sidebar-vw, $sidebar-max);
   padding: 3rem 2rem;
-  z-index: 100;
   height: 100vh;
+  z-index: 100;
 
-  /* need media query for hiding this menu at certain width */
+  @media(max-width: 1225px) {
+    flex: none;
+    height: 125px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    position: sticky;
+    top: 0;
+  }
 }
 
 #content {
@@ -55,12 +67,17 @@ body {
   min-width: 0;
   height: 100vh;
 
+  @media (max-width: 1225px) {
+    height: auto;
+  }
+
   .content-page {
-    padding: 8rem 4rem 3rem;
+    padding: 4rem;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
   }
 }
 
@@ -72,10 +89,6 @@ body {
   text-align: center;
 }
 
-.bottom-margin {
-  margin-bottom: 1rem;
-}
-
 
 // NAVBAR
 #navbar {
@@ -84,6 +97,10 @@ body {
   align-items: center;
   justify-content: space-between;
   height: 100%;
+
+  @media(max-width: 1225px) {
+    flex-direction: row;
+  }
 
   h2 {
     font-size: $nav-title-size;
@@ -101,6 +118,11 @@ body {
     gap: 3.5rem;
     width: 100%;
 
+    @media(max-width: 1225px) {
+      flex-direction: row;
+      justify-content: center;
+    }
+
     a {
       display: flex;
       align-items: center;
@@ -110,6 +132,11 @@ body {
       font-size: 1.25rem;
       width: 157px;
       transition: color 0.35s ease, transform 0.35s ease;
+
+      @media(max-width: 1225px) {
+      font-size: 1rem;
+      width: auto;
+    }
 
       &:hover {
         transform: scale(1.2);
@@ -184,7 +211,7 @@ body {
     z-index: 3;
 
     h1 {
-      font-size: 8rem;
+      font-size: clamp(4rem, 8vw, 8rem);
       font-weight: $bold;
       margin: .5rem 0 2.5rem;
     }
@@ -208,8 +235,8 @@ body {
   gap: 6rem;
   min-height: 100%;
 
-  h1 {
-    margin-bottom: 5rem;
+  @media(max-width: 1225px) {
+    overflow-y: visible;
   }
 
   .about-main {
@@ -217,6 +244,12 @@ body {
     gap: 6rem;
     width: 100%;
     max-width: 1100px;
+
+    @media(max-width: 1425px) {
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+    }
 
 
     .about-photo-container {
@@ -268,6 +301,12 @@ body {
       align-items: flex-start;
       justify-content: space-between;
       height: 450px;
+
+      @media(max-width: 1425px) {
+        align-items: center;
+        text-align: center;
+        gap: 1rem;
+      }
 
       h2 {
         color: $accent;
@@ -323,6 +362,11 @@ body {
       height: 100%;
       width: 100%;
       align-items: flex-start;
+
+      @media(max-width: 1425px) {
+        align-items: center;
+        flex: 0 0 50%;
+      }
 
       .stats-title {
         display: flex;
@@ -383,17 +427,26 @@ body {
       align-items: flex-start;
       flex: 1 1 0;
       height: 100%;
-      width: 100%;
+
+      @media(max-width: 1425px) {
+        align-items: center;
+      }
 
       .interests-chips {
-        display: flex;
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: repeat(4, auto);
         gap: 2rem;
 
         .chip {
           display: flex;
           align-items: center;
           gap: 1rem;
+        }
+      }
+
+      @media (max-width: 1550px) {
+        .interests-chips {
+          grid-template-columns: repeat(2, 1fr);
         }
       }
     }
